@@ -28,3 +28,5 @@ abstract class Beverage {
         return true;
     }
 }
+
+export default Beverage;
