@@ -1,10 +1,10 @@
 class CustomLogger {
-    private static INSTANCE: CustomLogger = new CustomLogger();
+    private static _INSTANCE: CustomLogger = new CustomLogger();
 
     private CustomLogger() {};
 
     public static getInstance(): CustomLogger {
-        return CustomLogger.INSTANCE;
+        return CustomLogger._INSTANCE;
     }
 
     public info(message: string): void {
