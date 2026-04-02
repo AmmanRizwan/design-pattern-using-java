@@ -1,0 +1,14 @@
+{
+  "name": "creational_pattern",
+  "packageManager": "yarn@4.10.3",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts",
+    "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "@types/node": "^25.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
