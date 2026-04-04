@@ -1,1 +1,1 @@
-# creational_pattern
+# structural_pattern
