@@ -4,6 +4,8 @@ import SeaLogistics from "./factory_method/SeaLogistics";
 import WindowFactory from "./abstract_factory/WindowFactory";
 import MacFactory from "./abstract_factory/MacFactory";
 import Application from "./abstract_factory/Application";
+import Circle from "./protoype/Circle";
+import Shape from "./protoype/Shape";
 
 // Singleton Example
 
@@ -42,3 +44,13 @@ const app2: Application = new Application(mac);
 
 app1.render();
 app2.render();
+
+// Prototype Example
+
+const circle1: Circle = new Circle("blue");
+const circle2: Shape = circle1.clone();
+
+
+console.log("\nPrototype Example of Circle Class:\n");
+console.log(circle1);
+console.log(circle2);
