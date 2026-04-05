@@ -2,11 +2,12 @@ import Image from "./Image";
 import RealImage from "./RealImage";
 
 class ProxyImage implements Image {
-    private realImage: RealImage | null = null;
+    private realImage: RealImage;
     private fileName: string;
 
     public constructor(fileName: string) {
         this.fileName = fileName;
+        this.realImage = new RealImage(fileName);
     }
 
     public display(): void {
