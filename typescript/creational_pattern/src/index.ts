@@ -6,6 +6,9 @@ import MacFactory from "./abstract_factory/MacFactory";
 import Application from "./abstract_factory/Application";
 import Circle from "./protoype/Circle";
 import Shape from "./protoype/Shape";
+import Builder from "./builder/Builder";
+import House from "./builder/House";
+
 
 // Singleton Example
 
@@ -54,3 +57,14 @@ const circle2: Shape = circle1.clone();
 console.log("\nPrototype Example of Circle Class:\n");
 console.log(circle1);
 console.log(circle2);
+
+// Builder Example
+
+const house = new Builder()
+                    .setFoundation("Glass")
+                    .setWalls("Bricks")
+                    .setRoof("Opened")
+                    .build();
+
+console.log("\nBuilder Example of House Class:\n");
+house.getCar();

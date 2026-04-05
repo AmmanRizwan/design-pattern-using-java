@@ -11,7 +11,7 @@ class House {
         this._roof = builder.roof;
     }
 
-    public getCart(): void {
+    public getCar(): void {
         console.log(`Car: foundation:${this._foundation}, walls:${this._walls}, roof:${this._roof}`);
     }
 }
