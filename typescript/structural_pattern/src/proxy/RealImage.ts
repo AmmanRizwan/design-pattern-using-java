@@ -5,18 +5,13 @@ class RealImage implements Image {
 
     public constructor(fileName: string) {
         this.fileName = fileName;
-        this.loadFromDisk();
+        // this.loadFromDisk();
     }
 
-    private loadFromDisk(): void {
-        try {
-            setTimeout(() => {
-                console.log("Loading Image from disk: " + this.fileName);
-            }, 1000);
-        }
-        catch (error: any) {
-            console.log(error.message);
-        }
+    private async loadFromDisk(): Promise<void> {
+        setTimeout(() => {
+            console.log("Loading Image from disk: " + this.fileName);
+        }, 1000);
     }
 
     public display(): void {
