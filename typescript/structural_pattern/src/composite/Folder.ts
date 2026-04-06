@@ -17,16 +17,16 @@ class Folder implements FileComponent {
     }
 
     public showDetails(indent: number): void {
-        console.log(" ".repeat(indent) + "Folder: " + this.name);
+        console.log("   ".repeat(indent) + "📁Folder: " + this.name);
         for (let i = 0; i < this.children.length; i++) {
-            this.children[i].showDetails(indent + 1);
+            this.children[i]!.showDetails(indent + 1);
         }
     }
 
     public getSize(): number {
         let total = 0;
         for (let i = 0; i < this.children.length; i++) {
-            total += this.children[i].getSize();
+            total += this.children[i]!.getSize();
         }
 
         return total;

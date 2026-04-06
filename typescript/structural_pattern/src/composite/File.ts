@@ -10,7 +10,7 @@ class File implements FileComponent {
     }
 
     public showDetails(indent: number): void {
-        console.log(" ".repeat(indent) + "File: " + this.name + " (" + this.size + " KB)");
+        console.log("   ".repeat(indent) + "📄File: " + this.name + " (" + this.size + " KB)");
     }
 
     public getSize(): number {

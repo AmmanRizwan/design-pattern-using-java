@@ -90,6 +90,7 @@ mediaFolder.add(file3);
 mediaFolder.add(file4);
 
 projectFolder.add(file5);
+projectFolder.add(file6);
 
 rootFolder.add(documentFolder);
 rootFolder.add(mediaFolder);
