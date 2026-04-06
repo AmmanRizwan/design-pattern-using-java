@@ -2,6 +2,11 @@ import MediaPlayer from "./adapter/MediaPlayer";
 import AudioPlayer from "./adapter/AudioPlayer";
 import ProxyDocument from "./proxy/ProxyDocument";
 import ProxyImage from "./proxy/ProxyImage";
+import HomeThreaterFascade from "./fascade/HomeThreaterFascade";
+import DVDPlayer from "./fascade/DVDPlayer";
+import Projector from "./fascade/Projector";
+import SoundSystem from "./fascade/SoundSystem";
+import Lights from "./fascade/Lights";
 
 // Adapter Example
 
@@ -30,3 +35,32 @@ user.editContent("This is a user content written for a testing purpose.");
 console.log("\nImage loading from the disk take time at once...\n");
 
 image.display();
+
+// Fascade Example
+
+console.log("\nFascade Example of HomeThreaterFascade Class.\n");
+
+console.log("=== WITHOUT FASCADE ===\n");
+
+const dvd: DVDPlayer = new DVDPlayer();
+const projector: Projector = new Projector();
+const sound: SoundSystem = new SoundSystem();
+const lights: Lights = new Lights();
+
+lights.dim(10);
+projector.on();
+projector.wideScreenMode();
+sound.on();
+sound.setVolume(5);
+dvd.on();
+dvd.play("Inception");
+
+console.log();
+console.log("\n=== WITH FASCADE ===\n");
+const threater: HomeThreaterFascade = new HomeThreaterFascade(dvd, projector, sound, lights);
+
+threater.watchMovie("The White Night");
+console.log();
+threater.endMovie();
+
+
