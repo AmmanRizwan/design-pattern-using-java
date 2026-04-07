@@ -1,0 +1,1 @@
+console.log("Behavioral Design Pattern");
