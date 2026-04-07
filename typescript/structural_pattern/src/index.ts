@@ -10,6 +10,12 @@ import Lights from "./fascade/Lights";
 import File from "./composite/File";
 import Folder from "./composite/Folder";
 import FileComponent from "./composite/FileComponent";
+import SimpleCoffee from "./decorator/SimpleCoffee";
+import MilkDecorator from "./decorator/MilkDecorator";
+import SugarDecorator from "./decorator/SugarDecorator";
+import WhipDecorator from "./decorator/WhipDecorator";
+import Espresso from "./decorator/Espresso"
+import Coffee from "./decorator/Coffee";
 
 
 // Adapter Example
@@ -106,3 +112,22 @@ console.log("\n=== Removing Media Folder ===\n");
 rootFolder.remove(mediaFolder);
 rootFolder.showDetails(0);
 console.log("New root size: " + rootFolder.getSize() + " KB");
+
+// Decorator Example 
+
+console.log("\nDecorator Example using Coffee Classes.\n");
+
+const coffee: Coffee = new SimpleCoffee();
+console.log(coffee.getDescription() + " $" + coffee.getCost());
+
+const milkCoffee: Coffee = new MilkDecorator(new SimpleCoffee());
+console.log(milkCoffee.getDescription() + " $" + milkCoffee.getCost());
+
+const milkSugarCoffee: Coffee = new SugarDecorator(new MilkDecorator(new SimpleCoffee()));
+console.log(milkSugarCoffee.getDescription() + " $" + milkSugarCoffee.getCost());
+
+const fancyCoffee: Coffee = new WhipDecorator(new SugarDecorator(new MilkDecorator(new SimpleCoffee())));
+console.log(fancyCoffee.getDescription() + " $" + fancyCoffee.getCost());
+
+const espresso: Coffee = new MilkDecorator(new Espresso());
+console.log(espresso.getDescription() + " $" + espresso.getCost());

@@ -9,3 +9,5 @@ class SimpleCoffee implements Coffee {
         return 2.0;
     }
 }
+
+export default SimpleCoffee;

@@ -14,3 +14,5 @@ class SugarDecorator extends CoffeeDecorator {
         return this.decoratedCoffee.getCost() + 0.2;
     }
 }
+
+export default SugarDecorator;
