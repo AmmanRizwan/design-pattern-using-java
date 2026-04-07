@@ -1,9 +1,18 @@
+// =============================================================================
+// Simple Backend Application with Todo API
+// Author: Amman Rizwan
+// Stack: Spring Boot Application
+// Date: 2026-04-06
+// =============================================================================
+
 package archi.mvc.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class BackendApplication {
 
 	public static void main(String[] args) {
