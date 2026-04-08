@@ -16,3 +16,7 @@ spring:
 
   config:
     import: optional:file:.env[.properties]
+
+cors:
+  methods: ${CORS_METHODS}
+  origin: ${CORS_ORIGIN}
