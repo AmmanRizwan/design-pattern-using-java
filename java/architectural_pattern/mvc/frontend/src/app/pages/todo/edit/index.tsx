@@ -8,32 +8,32 @@ interface ITodo {
 
 const EditTodo = () => {
     const navigate = useNavigate();
-    const [data, setData] = useState<ITodo>({ task: ""});
+    const [data, setData] = useState<ITodo>({ task: "" });
     const { id } = useParams();
 
     const updateTodo = async () => {
-        const response = await updateTodoById(id as string, data);
+        const response = await updateTodoById(id!, data);
         console.log(response.data);
         navigate("/");
     } 
 
     useEffect(() => {
         const fetchSingleTodo = async () => {
-            const response = await getTodoBydId(id as string);
+            const response = await getTodoBydId(id!);
             console.log(response.data);
-            setData(response.data?.task);
+            console.log(response.data.task);
+            setData({task: response.data.task});
         }
         fetchSingleTodo();
-    }, [data, id])
+    }, [id])
 
-    console.log(id);
     return (
         <div>
             <div>Editing the Todo</div>
 
-            <input type="text" value={data.task} onChange={(e) => setData((prev) => ({...prev, task: e.target.value}))} />
+            <input type="text" value={data.task} onChange={(e) => setData({task: e.target.value})} />
 
-            <button onClick={async () => { await updateTodo()}}>Update</button>
+            <button onClick={async () => { await updateTodo(); }}>Update</button>
 
         </div>
     )

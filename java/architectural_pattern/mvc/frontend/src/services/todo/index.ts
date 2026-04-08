@@ -29,10 +29,16 @@ const deleteTodoById = async (id: string) => {
     return response.data;
 }
 
+const setCompleteTodoById = async (id: string) => {
+    const response = await api.put(`/v1/api/todo/completed/${id}`);
+    return response.data;
+}
+
 export {
     createTodo,
     getTodos,
     getTodoBydId,
     updateTodoById,
-    deleteTodoById
+    deleteTodoById,
+    setCompleteTodoById
 }
