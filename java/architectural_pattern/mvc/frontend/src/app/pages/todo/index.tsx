@@ -27,12 +27,12 @@ const Todos = () => {
         console.log(response.data);
     }
 
+    const fetchData = async () => {
+        const response = await getTodos();
+        setTodos(response.data);
+    }
     
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await getTodos();
-            setTodos(response.data);
-        }
         fetchData();
     }, []);
 
