@@ -1,39 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTodoBydId, updateTodoById } from "../../../../services/todo";
-
-interface ITodo {
-    task: string;
-}
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const EditTodo = () => {
+    const queryClient = useQueryClient();
     const navigate = useNavigate();
-    const [data, setData] = useState<ITodo>({ task: "" });
+    const [task, setTask] = useState("");
     const { id } = useParams();
 
-    const updateTodo = async () => {
-        const response = await updateTodoById(id!, data);
-        console.log(response.data);
-        navigate("/");
-    } 
+    const { data, isLoading } = useQuery({
+        queryFn: () => getTodoBydId(id as string),
+        queryKey: ['todo'],
+    });
 
-    useEffect(() => {
-        const fetchSingleTodo = async () => {
-            const response = await getTodoBydId(id!);
-            console.log(response.data);
-            console.log(response.data.task);
-            setData({task: response.data.task});
+    const { mutateAsync: submit } = useMutation({
+        mutationFn: (task: {task: string}) => updateTodoById(id as string, task),
+        onSuccess: () => {
+            queryClient.invalidateQueries(['todos']);
         }
-        fetchSingleTodo();
-    }, [id])
+    })
+    
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
 
     return (
         <div>
             <div>Editing the Todo</div>
 
-            <input type="text" value={data.task} onChange={(e) => setData({task: e.target.value})} />
+            <input type="text" defaultValue={data.data.task} onChange={(e) => setTask(e.target.value)}  />
 
-            <button onClick={async () => { await updateTodo(); }}>Update</button>
+            <button onClick={async () => { 
+                await submit({ task: task });
+                navigate("/");
+             }}>Update</button>
 
         </div>
     )
