@@ -6,6 +6,7 @@ import Item from "./strategy/Item";
 import ShoppingCart from "./strategy/ShoppingCart";
 import CreditCardPayment from "./strategy/CreditCardPayment";
 import PaymentStrategy from "./strategy/PaymentStrategy";
+import VendingMachine from "./state/VendingMachine";
 
 // Template Method Example
 
@@ -39,3 +40,44 @@ console.log("Total Amount: " + cart.calculateTotal());
 
 cart.setPaymentStrategy(payment);
 cart.checkOut();
+
+// State Example
+
+console.log("\nExample of State using the Vending Machine class.\n");
+
+const machine: VendingMachine = new VendingMachine(3);
+
+console.log("\n=== Vending Machine Demo ===\n");
+console.log("--- Scenario 1: Normal Purchase ---");
+machine.insertCoin();
+machine.pressButton();
+machine.dispense();
+
+console.log("\n--- Scenario 2: No Coin inserted ---");
+machine.pressButton();
+machine.dispense();
+
+console.log("\n--- Scenario 3: Eject Coin ---");
+machine.insertCoin();
+machine.ejectCoin();
+machine.pressButton();
+
+console.log("\n--- Scenario 4: Multiple Purchases ---");
+machine.insertCoin();
+machine.pressButton();
+machine.dispense();
+
+machine.insertCoin();
+machine.pressButton();
+machine.dispense();
+
+console.log("\n--- Scenario 5: Out of Stock ---");
+machine.insertCoin();
+machine.pressButton();
+machine.dispense();
+
+console.log("\n--- Scenario 6: Refill Machine ---");
+machine.refill(3);
+machine.insertCoin();
+machine.pressButton();
+machine.dispense();
