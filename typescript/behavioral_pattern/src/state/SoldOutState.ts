@@ -9,19 +9,19 @@ class SoldOutState implements State {
     }
 
     public insertCoin(): void {
-        
+        console.log("Machine is sold out. Coin ejected");
     }
 
     public ejectCoin(): void {
-        
+        console.log("No coin inserted");
     }
 
     public pressButton(): void {
-        
+        console.log("Machine is sold out");
     }
 
     public dispense(): void {
-        
+        console.log("No items to machine");
     }
 }
 
