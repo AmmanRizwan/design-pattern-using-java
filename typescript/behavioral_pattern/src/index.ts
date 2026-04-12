@@ -7,6 +7,11 @@ import ShoppingCart from "./strategy/ShoppingCart";
 import CreditCardPayment from "./strategy/CreditCardPayment";
 import PaymentStrategy from "./strategy/PaymentStrategy";
 import VendingMachine from "./state/VendingMachine";
+import WeatherStation from "./observer/WeatherStation";
+import CurrentConditionsDisplay from "./observer/CurrentConditionsDisplay";
+import StaticsDisplay from "./observer/StaticsDisplay";
+import ForcastDisplay from "./observer/ForcastDisplay";
+
 
 // Template Method Example
 
@@ -81,3 +86,26 @@ machine.refill(3);
 machine.insertCoin();
 machine.pressButton();
 machine.dispense();
+
+// Observer Example
+
+console.log("\nExample of Observer using the Weather Station class.\n");
+
+const station = new WeatherStation();
+
+const currentDisplay = new CurrentConditionsDisplay();
+const staticDisplay = new StaticsDisplay();
+const forcastDisplay = new ForcastDisplay();
+
+station.registerObserver(currentDisplay);
+station.registerObserver(staticDisplay);
+station.registerObserver(forcastDisplay);
+
+console.log("=== Weather Update 1 ===");
+station.setMeasurements(25.2, 65.0, 1013.0);
+
+console.log("=== Weather Update 2 ===");
+station.setMeasurements(27.0, 70.0, 1012.0);
+
+console.log("=== Weather Update 3 ===");
+station.setMeasurements(23.0, 60.0, 1014.0);
