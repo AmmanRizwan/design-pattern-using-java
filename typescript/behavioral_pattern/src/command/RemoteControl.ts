@@ -24,13 +24,13 @@ class RemoteControl {
     }
 
     public onButtonPressed(slot: number) {
-        this.onCommands[slot].execute();
-        this.undoCommand = this.onCommands[slot];
+        this.onCommands[slot]!.execute();
+        this.undoCommand = this.onCommands[slot]!;
     }
 
     public offButtonPressed(slot: number) {
-        this.offCommands[slot].execute();
-        this.undoCommand = this.offCommands[slot];
+        this.offCommands[slot]!.execute();
+        this.undoCommand = this.offCommands[slot]!;
     }
 
     public undoButtonPressed(): void {
@@ -44,3 +44,5 @@ class RemoteControl {
         }
     }
 }
+
+export default RemoteControl;
