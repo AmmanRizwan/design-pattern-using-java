@@ -1,0 +1,91 @@
+.todo-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-title h1 {
+    font-size: 40px;
+    margin: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.todo-input {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.todo-input input {
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 300px;
+    padding-left: 20px;
+}
+
+.todo-input button {
+    padding: 6px 20px;
+    border-radius: 10px;
+    border: none;
+    background: rgb(128, 128, 255);
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+.todo-input button:hover {
+    cursor: pointer;
+    background:rgb(153, 153, 248);
+}
+
+.todo-list-title {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-list-title h3 {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.list-todo-body {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.todo-option button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    background: rgb(128, 128, 255);
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 800px) {
+    .todo-input {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .todo-input input {
+        width: fit-content;
+    }
+
+    .todo-input button {
+        padding: 10px 20px;
+    }
+}

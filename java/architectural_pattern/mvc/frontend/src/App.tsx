@@ -1,3 +1,4 @@
+import "./index.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Todos from "./app/pages/todo"
 import EditTodo from "./app/pages/todo/edit"

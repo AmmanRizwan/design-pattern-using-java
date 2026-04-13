@@ -1,3 +1,4 @@
+import "./index.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { createTodo, deleteTodoById, getTodos, setCompleteTodoById } from "../../../services/todo";
@@ -42,20 +43,24 @@ const Todos = () => {
 
     return (
         <div>
-            <h1>Todo List</h1>
+            <div className="todo-title">
+                <h1>Todo List</h1>
+            </div>
 
-            <div>
-                <input type="text" value={task} onChange={(e) => setTask(e.target.value)} /> <button onClick={async () => { await submit({task: task}); setTask("") }}>Submit</button>
+            <div className="todo-input">
+                <input type="text" value={task} onChange={(e) => setTask(e.target.value)} placeholder="Enter your Task" /> <button onClick={async () => { await submit({task: task}); setTask("") }}>Submit</button>
             </div>
 
             <div>
-                <h3>Todo</h3>
+                <div className="todo-list-title">
+                    <h3>Todo</h3>
+                </div>
                 {
                     todo.data.map((value: ITodo, index: number) => {
                         return (
-                            <div key={index} style={{ border: "1px"}}>
-                                <p>Task: {value.task}</p>
-                                <div>
+                            <div className="list-todo-body" key={index} style={{ border: "1px"}}>
+                                <div className="todo-content">
+                                    <p>Task: {value.task}</p>
                                     <p>Completed {value.is_completed ? "COMPLETED" : "NOT COMPLETED"}</p> 
                                     {
                                         !value.is_completed ? (
@@ -63,9 +68,11 @@ const Todos = () => {
                                         ) : null
                                     }
                                 </div>
-                                <button onClick={() => {
-                                    navigate(`/edit/${value.id}`)
-                                }}>Edit</button> <button onClick={async () => { await deleteById(value.id)} }>delete</button>
+                                <div className="todo-option">
+                                    <button onClick={() => {
+                                        navigate(`/edit/${value.id}`)
+                                    }}>Edit</button> <button onClick={async () => { await deleteById(value.id)} }>delete</button>
+                                </div>
                             </div>                            
                         )
                     })
