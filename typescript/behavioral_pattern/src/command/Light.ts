@@ -13,3 +13,5 @@ class Light {
         console.log(this.location, " light is OFF");
     }
 }
+
+export default Light;

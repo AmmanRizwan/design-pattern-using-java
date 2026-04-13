@@ -13,3 +13,5 @@ class TV {
         console.log(this.location, " tv is OFF");
     }
 }
+
+export default TV;

@@ -13,3 +13,5 @@ class Fan {
         console.log(this.location, " fan is OFF");
     }
 }
+
+export default Fan;
