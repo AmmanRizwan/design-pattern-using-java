@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import Route from "./routes";
 import { sequelize } from "./config/db";
 
 dotenv.config();
@@ -22,6 +23,8 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (_req: Request, res: Response) => {
     res.status(200).json({ message: "Server is ready!" });
 })
+
+app.use("/v1/api", Route);
 
 sequelize.sync({ alter: ENV === "development"}).then(() => {
     app.listen(PORT, () => {
