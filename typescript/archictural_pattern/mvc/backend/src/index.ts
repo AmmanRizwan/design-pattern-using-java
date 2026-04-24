@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { sequelize } from "./config/db";
 
 dotenv.config();
 
@@ -22,7 +23,12 @@ app.get("/", (_req: Request, res: Response) => {
     res.status(200).json({ message: "Server is ready!" });
 })
 
-app.listen(PORT, () => {
-    console.log(`Application is in the ${ENV === "development" ? "Development" : "On"}`);
-    console.log(`Server is running on port ${PORT}`);
+sequelize.sync({ alter: ENV === "development"}).then(() => {
+    app.listen(PORT, () => {
+        console.log(`Application is in the ${ENV === "development" ? "Development" : "On"}`);
+        console.log(`Server is running on port ${PORT}`);
+    })
+})
+.catch((err) => {
+    console.log(err);
 })
